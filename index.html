@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMap – Film & Serien Drehorte</title>
+  
+  <!-- Leaflet Stylesheet für Karten -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Eigenes Stylesheet -->
+  <link rel="stylesheet" href="/CineMap/src/styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>CineMap</h1>
+    
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#filme">Filme</a></li>
+        <li><a href="#laender">Länder</a></li>
+        <li><a href="#themen">Themen</a></li>
+      </ul>
+    </nav>
+
+    <!-- Suchfeld & Steuerungselemente -->
+    <div id="top-controls">
+      <input type="text" id="search-field" placeholder="Suche..." title="Gib einen Film, ein Land oder ein Thema ein">
+        <div id="search-suggestions"></div>
+        <button id="reset-button" title="Seite zurücksetzen">⟲</button>
+        <button id="toggle-panel" title="Menü öffnen/schließen">☰</button>        
+    </div>
+  </header>
+
+  <!-- HAUPTBEREICH -->
+  <main>
+    <!-- Karte -->
+    <div id="map"></div>
+
+    <!-- INFO-SIDEBAR -->
+    <div id="info-panel">
+      <h2>Willkommen bei CineMap!</h2>
+
+      <!-- Erklärender Text für Nutzer -->
+      <p id="location-info">
+        Entdecke Drehorte von Filmen und Serien auf unserer interaktiven Weltkarte.<br>
+        Klicke auf einen Marker, um mehr Details zu erfahren, oder wähle in der Navigation "Filme" aus.
+      </p>
+
+      <!-- Dynamischer Listen-Container -->
+      <div id="lists-container" style="display: none;">
+        <div id="dynamic-header"></div> <!-- Platzhalter für dynamische Inhalte -->
+        
+        <!-- Filmliste -->
+        <ul id="film-list"></ul>
+
+        <!-- Länderliste -->
+        <ul id="country-list" style="display: none;"></ul>
+
+        <!-- Themenliste -->
+        <ul id="theme-list"></ul>
+
+        <!-- Gefilterte Drehortliste -->
+        <ul id="location-list" style="display: none;"></ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Leavelet – Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/CineMap/src/script.js"></script>
+
+</body>
+</html>
+
+
+
+

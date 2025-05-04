@@ -1,0 +1,410 @@
+/* --- ALLGEMEINE STYLES --- */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #1e1e1e;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- HEADER --- */
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* HEADER TITEL */
+header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+nav {
+    margin-top: 8px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 35px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover-Effekt für die Links */
+nav ul li a:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+/* --- BURGER-BUTTON --- */
+#toggle-panel {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #444, #555);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    z-index: 1101;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#toggle-panel:hover {
+    background: linear-gradient(135deg, #555, #666);
+    transform: scale(1.1);
+}
+
+/* Wenn Sidebar offen ist */
+.info-visible + #toggle-panel {
+    background: #e74c3c;
+}
+
+/* MAIN BEREICH */
+main {
+    display: flex;
+    flex: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+/* KARTENBEREICH */
+#map {
+    width: 80vw;
+    height: calc(100vh - 150px);
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#info-panel {
+    width: 350px;
+    max-width: 100%;
+    height: 100vh;
+    background: #222;
+    color: white;
+    padding: 20px;
+    padding-top: 60px; /* Hier den gewünschten Abstand oben einstellen */
+    padding-bottom: 60px;  /* Falls gewünscht */
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    border-left: 3px solid #444;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: right 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Falls das Padding nicht ausreicht, kann ein Pseudo-Element helfen */
+#info-panel::after {
+    content: "";
+    display: block;
+    height: 60px; /* Passe den Wert nach Bedarf an */
+    flex-shrink: 0; /* Falls Flexbox genutzt wird */
+}
+
+
+/* Sidebar sichtbar */
+.info-visible {
+    right: 0 !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 🎬 Sidebar Überschriften */
+#info-panel h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #666;
+    padding-bottom: 5px;
+}
+
+#info-panel h2 {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#info-panel p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.6;
+    text-align: center;
+}
+
+#info-panel p b {
+    color: white;
+}
+
+/* 🎨 Text-Hervorhebungen */
+#info-panel strong {
+    font-size: 18px;
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#info-panel b {
+    color: white;
+}
+
+/* 📍 Adresse Styling */
+#info-panel p b {
+    font-size: 17px;
+    color: white;
+}
+
+/* 🏙 Bild im Info-Panel */
+#info-panel img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+#info-panel img:hover {
+    transform: scale(1.05);
+}
+
+/* Listen für Filme, Drehorte, Länder und Themen */
+#film-list, #location-list, #country-list, #theme-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+/* Einträge für Filme, Drehorte, Länder und Themen */
+.film-item, .location-item, .country-item, .theme-item {
+    padding: 12px 15px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #555;
+}
+
+/* 📌 Hover-Effekt */
+.film-item:hover, .location-item:hover, .country-item:hover, .theme-item:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+/* 🔄 Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.film-item, .location-item, .country-item {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* FOOTER */
+footer {
+    width: 100%;
+    height: 40px;
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+
+/* Container für die Buttons – relativ positioniert */
+#top-controls {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: 120px;  /* Passe die Breite nach Bedarf an */
+    height: 45px;  /* Höhe entspricht der Button-Höhe */
+    z-index: 1100; /* Damit sie immer oben liegen */
+    /* Optional: Hintergrund transparent, falls gewünscht */
+  }
+  
+  /* Gemeinsame Styles für beide Buttons */
+  #top-controls button {
+    position: absolute;  /* Absolut positioniert innerhalb von #top-controls */
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Reset-Button: individuell positionierbar */
+  #reset-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    left: 15px;   /* Verschiebt den Button 20px von der linken Seite des Containers entfernt */
+    top: 0;
+  }
+  
+  /* Burger-Button: individuell positionierbar */
+  #toggle-panel {
+    background: linear-gradient(135deg, #444, #555);
+    right: 0;  /* Setzt ihn rechts im Container */
+    top: 0;    /* Setzt ihn oben im Container */
+    /* Auch hier kannst du z. B. right: -10px setzen, falls du ihn noch etwas nach außen rücken möchtest */
+  }
+  
+  /* Hover-Effekt für beide Buttons */
+  #top-controls button:hover {
+    transform: scale(1.1);
+  }
+
+/* Modern gestylter Zurück-Button */
+#back-button {
+    background: linear-gradient(135deg, #444, #555); /* Moderner Farbverlauf */
+    color: #fff;                   /* Weißer Text */
+    border: none;                  /* Kein Rahmen */
+    border-radius: 5px;            /* Abgerundete Ecken */
+    padding: 10px 20px;            /* Angenehme Innenabstände */
+    font-size: 16px;               /* Gut lesbare Schriftgröße */
+    cursor: pointer;               /* Zeigt, dass der Button klickbar ist */
+    transition: transform 0.3s ease, background 0.3s ease; /* Sanfte Übergänge */
+    margin-top: 20px;              /* Abstand zum darüberliegenden Inhalt */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Leichter Schatten */
+  }
+  
+  #back-button:hover {
+    background: linear-gradient(135deg, #444, #555); /* Intensiver Farbverlauf beim Hover */
+    transform: translateY(-2px);  /* Leichtes Anheben beim Hover */
+  }
+
+/* Professionelles Styling für den Zurück-Button */
+.back-button {
+    background-color: #444; /* Primäre Farbe (Blau) */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+  }
+  
+  .back-button:active {
+    transform: translateY(0);
+  }
+  
+  .back-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  }
+
+  /* Beispiel: Suchfeld im Header, rechts neben dem Burger-Button positionieren */
+#search-field {
+    position: absolute;  /* oder fixed, wenn du es immer sichtbar haben möchtest */
+    top: 3px;           /* Abstand vom oberen Rand */
+    right: 120px;         /* Abstand vom rechten Rand (Passe diesen Wert an, damit es neben dem Burger-Button erscheint) */
+    width: 200px;        /* Breite des Suchfelds */
+    height: 30px;        /* Höhe des Suchfelds */
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  #search-suggestions {
+    display: none; /* Standardmäßig versteckt */
+    position: absolute;
+    top: 45px;           /* Direkt unter dem Suchfeld (anpassen, falls nötig) */
+    right: 120px;        /* Gleicher Abstand wie beim Suchfeld */
+    width: 200px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+#search-suggestions li {
+    list-style: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#search-suggestions li:hover {
+    background: #f0f0f0;
+}
+
+
+

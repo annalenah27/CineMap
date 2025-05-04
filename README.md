@@ -26,7 +26,6 @@ CineMap ist eine interaktive Weltkarte, auf der Nutzer echte Drehorte berühmter
  │    ├── 📂 assets/      # Icons, Marker
  │    ├── 📂 php/         # PHP-Dateien (Backend)
  │
- ├── 📂 docs/             # Eigenständigkeitserklärung
  ├── README.md            # Diese Datei (Projektbeschreibung)
 
 
